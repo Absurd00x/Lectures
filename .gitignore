@@ -1,0 +1,11 @@
+*.layout
+*.workspace
+Makefile
+**/Debug/
+*.txt
+*.mk
+*.project
+*.d
+*.o
+**/build-Debug/
+**/.codelite
