@@ -1,11 +1,11 @@
-// Includes all the libraries there is in c++ standard library
+// Includes all the libraries there is in c++ standard library:
 #include <bits/stdc++.h>
-// This is just a file in bits directory that has many-many other includes
+// This is just a file in "bits" directory that has many-many other includes.
 // You can check it out yourself by following this link:
 // https://github.com/gcc-mirror/gcc/blob/d9375e490072d1aae73a93949aa158fcd2a27018/libstdc%2B%2B-v3/include/precompiled/stdc%2B%2B.h
 // In order to use this with Visual studio, go to
 // visual studio -> VS edition -> VC -> tools -> MSVC -> ver -> include
-// create a folder named "bits" and place stdc++.h file here
+// Create a folder named "bits" and place stdc++.h file here.
 
 using namespace std;
 
@@ -16,19 +16,19 @@ using namespace std;
 // A function in programming is a callable block of code.
 // In the contrast to mathimatics, a function in programming
 // does not have to return anything.
-// Such functions are called procedures.
+// Such functions are sometimes called procedures.
 
 // Functions have the following usage:
 // 1. Reuse written code multiple times;
-// 2. Decompose the program;
+// 2. Decompose the program (break it into logically completed parts);
 // 3. Use code that is already written for you like sort() function.
 
 // You can declare your own functions as follows:
 // returning_data_type function_name(arguments) {**code**}
 // Arguments is a list of variablse that function needs to run.
 // Different functions have either different names or argument types.
-// But returning data type does not tell the compiler that functions
-// are different (if name and argument list is the same)
+// Returning data type does not tell compiler that functions are different
+// if the names and the argument lists are the same in those functions.
 
 int square(int x) {
   int res = x * x;
@@ -37,43 +37,41 @@ int square(int x) {
 
 // There is a special data type "void"
 // It suggests that the function does not return anything.
-// In fact it does return nothing.
+// In fact it literally does return nothing.
 void print(string something) {
   cout << something << endl;
   // You may use return statement if you want.
   // return;
 }
 
-// Asymptotics of something means how much does this something change if
-// the input volume changes. This definition is neither formal, nor absolutely
-// correct, but it captures the main idea.
-// O(n^2) time complexity means that the time algorithm consumes is proportional
-// to n^2. If n gets 10 times bigger, then the time needed for algorithm to
-// finish will increase 100 times.
+// Asymptotics, complexity, "big O" of something is a function of "something",
+// that depends on size of input, that is not less than "something" if it's
+// multiplied by a constant factor. Usually they trying to find the
+// smallest such function.
+// O(n^2) time complexity means that the time algorithm spends working
+// is not greater than n^2, multiplied by a constant factor.
 
-// Time complexity is proportional to the number of iterations a
-// program does. So if we calculate number of iterations depending on the
-// size of input, we will be able to estimate our program's time complexity.
-// In order to calculate time complexity we need to:
-// 1. Calculate the number of iterations proportionally to the input size.
-// 2. Break down into terms: n*(n-1)/2 = n*n/2 - n/2;
-// 3. Pick the biggest term; (n^2 > n)
-// 4. Remove the constants. (10*n = n, n^2 = n^2, 2 is notation and not a value)
-// Example:
+// Time complexity is proportional to the number of iterations that our
+// program does. If we calculate asymptotics of the number of iterations,
+// then we will be able to estimate the time complexity of an algorithm.
+// We consider all simple operations to be constant in time.
+// Such operations are addition, multiplication, getting a value by its index.
+// dereferencing and so on.
+
+// Thit means that in order to calculate asymptotics, we need to:
+// 1. Calculate total number of iterations;
+//    (in whole program, in a function or in a block of code);
+// 2. Break into terms like this; (n*(n-1)/2 = n*n/2 - n/2)
+// 3. Choose the biggest term; (n^2 > n)
+// 4. Remove all constant factors. (n^2/2 = n^2,
+//    n^2 = n^2, because 2 is a notation and not a constant)
 // O(n*(n-1)/2) = O(n*n/2 - n/2) = O(n*n/2) = O(n*n) = O(n^2)
 
-// Now on how to use it:
-// 1. Replace n with the biggest numbers from the statement.
-// Usually n <= 2*10^5.
+// To know ahead if your solution will pass on time, pick the biggest
+// numbers from the input and substitute what you have in O(..).
+// 3*10^7 fits in one second and 6*10^7 fits in two in C++.
 // O(n^2), n = 2*10^5;
 // (2*10^5)^2 = 4*10^10.
-// 2. Roughly 3*10^7 fits in one second in c++.
-// 6*10^7 fits in two seconds accordingly.
-// 3. If it fits, you can implement your code.
-// 4. If you are still uncertan, then don't remove constants and
-// smaller terms, but it will no longer be "time complexity"
-// Usually everyone uses asymptotics or big-O-notation or code complexity.
-// This is all the same thing.
 
 // Usually when peolpe study asymptotics, they are shown multiple
 // sorting algorithms, so they get the idea of how to calculate it.
@@ -88,7 +86,7 @@ void bubble_sort(vector<int> &arr) {
   // Explicit cast to int type, becase .size() returns unsigned long long.
   int n = (int)arr.size();
 
-  // The first cycle does n iterations
+  // The first cycle does n iterations.
   for (int i = 0; i < n; ++i) { // [0, n)
     // The second one always does n - 1 iterations
     // for each iteration of outer cycle.
@@ -98,8 +96,8 @@ void bubble_sort(vector<int> &arr) {
       }
     }
   }
-  // Two cycles are nested and dependent, so we can just multiply
-  // their number of iterations
+  // One cycle is nested into other and is independent of it,
+  // so we can just multiply their number of iterations.
   // O(n * (n - 1)) = O(n^2 - n) = O(n^2)
 
   // Time complexity is O(n^2)
@@ -111,9 +109,9 @@ void bubble_sort(vector<int> &arr) {
 void fast_bubble_sort(vector<int> &arr) {
   int n = (int)arr.size();
 
-  // The first cycle does n - 1 iterations
+  // The first cycle does n - 1 iterations.
   for (int i = 0; i < n - 1; ++i) {
-    // The second one does n-1, n-2, ..., 2, 1 iterations
+    // The second one does n-1, n-2, ..., 2, 1 iterations.
     for (int j = 1; j < (n - i); ++j) {
       if (arr[j] < arr[j - 1]) {
         swap(arr[j], arr[j - 1]);
@@ -123,11 +121,16 @@ void fast_bubble_sort(vector<int> &arr) {
   // We need to calculate the cumulative number of iterations:
   // (n - 1) + (n - 2) + ... + 2 + 1
   // 1 + 2 + ... + (n - 2) + (n - 1)
-  // The first element is 1, the last one is (n - 1)
+  // This is arithmetic progression.
+
+  // Arithmetic progression is a sequence of numbers where difference between
+  // two any consecutive terms is constant and equal to d.
+
+  // The first element is 1. The last one is (n - 1).
   // Their sum is 1 + (n - 1) = n.
-  // If we increase the first element by d, and decrease the last one by d,
-  // then the sum won't change. 'd' is difference between two consecutive terms.
-  // We repeat this process n times.
+  // If we increase the first element by d=1, and decrease the last one by d=1,
+  // then the sum won't change. 'd=1' is difference between two consecutive terms.
+  // We repeat this process as many times, as there temrs in the sequence.
   // But each term is counted twice, so we should divide it by 2 and get:
   // sum = (first + last) * number_of_terms / 2
   // In our case:
@@ -145,6 +148,7 @@ void bogo_sort(vector<int> &arr) {
   while (!sorted) {
     // There are n! = n * (n-1) * (n-2) * ... * 2 * 1 possible permutations
     // of array of size n.
+
     // First, we shuffle the array
     for (int i = n - 1; i > 0; --i) {
       // rand() function returns a random value between [0, RAND_MAX]
@@ -163,12 +167,12 @@ void bogo_sort(vector<int> &arr) {
       }
     }
   }
-  // If there are n! possible permutations and for each of those
+  // There are n! possible permutations and for each of those
   // permutations (big O consideres the worst case) we shuffle and
   // check for being sorted. Assuming each time we get a different array,
-  // which is not true in this example, total number of iterations is:
+  // which is not true in general, total number of iterations is:
   // n! * ((n-1) + (n-1)) = n! * 2(n-1)
-  // O(n! * 2(n - 1)) = O(n! * n)
+  // O(n! * 2(n-1)) = O(n! * n)
 
   // Time complexity is O(n! * n)
   // Space complexity is O(1)
@@ -180,18 +184,18 @@ void bogo_sort(vector<int> &arr) {
 vector<int> merge(vector<int> &arr, int start, int finish) {
   vector<int> res;
   if (finish - start == 1) {
-    // If there is a single element
+    // If there is a single element:
     res.push_back(arr[start]);
     return res;
   }
-  // Middle of [start, finish)
+  // Middle of [start, finish):
   int mid = start + (finish - start) / 2;
   // Sort left and right parts recursively
   vector<int> left = merge(arr, start, mid);
   vector<int> right = merge(arr, mid, finish);
   // "left" and "right" are sorted now.
-  // p1 is a pointer to the "left"
-  // p2 is a pointer to the "right" array
+  // p1 is a pointer to the left part.
+  // p2 is a pointer to the right part.
   int p1 = 0, p2 = 0;
   // Explicit cast
   int n_left = (int)left.size();
@@ -212,7 +216,7 @@ vector<int> merge(vector<int> &arr, int start, int finish) {
     res.push_back(left[p1]);
     ++p1;
   }
-  // ...or in the right part:
+  // Or in the right part:
   while (p2 < n_right) {
     res.push_back(right[p2]);
     ++p2;
@@ -220,8 +224,7 @@ vector<int> merge(vector<int> &arr, int start, int finish) {
   // On each recursion step the number of elements remaining decreases
   // by a factor of 2. If initial depth is 0, then at depth k the length is
   // equal to n / 2^k
-  // How many iterations are needed for recurtion to stop? When a single
-  // element remains?
+  // When only one element will remain the recursion will stop.
   // n / 2^k = 1
   // n = 2^k
   // log_2(n) = k
@@ -241,6 +244,10 @@ vector<int> merge(vector<int> &arr, int start, int finish) {
   // log_c(b) is a constant, so we can get rid of it. That means, we
   // can put any base we want and that will not contradict our definition
   // of big O. This is why we don't write any base in logarithm when using big O.
+
+  // Because we need to save all intermediate merge results, our implementation
+  // of merge sort takes O(n*log(n)) additional memory. There is an implementation,
+  // which uses no more than O(n) additional memory.
   return res;
 }
 
@@ -250,12 +257,12 @@ void merge_sort(vector<int> &arr) {
 }
 
 void count_sort(vector<int> &arr) {
-  // This function is not exactly a sorting algorithm, because it uses the
+  // This is not exactly a sorting algorithm, because it uses the
   // fact that it given nonnegative integer numbers.
   int max = *max_element(arr.begin(), arr.end());
   // Just declare an array
   vector<int> counts(max + 1, 0);
-  // And count how many times each number occures
+  // Count how many times each number occures
   for (int i = 0; i < (int)arr.size(); ++i) {
     ++counts[arr[i]];
   }
@@ -272,7 +279,7 @@ void count_sort(vector<int> &arr) {
   // Space complexity is O(max_element)
 }
 
-// This is just an example on how to use big O notation. If you need a sorting
+// This is just an example on how to calculate complexities. If you need a sorting
 // function, you most likely need to use the standard one:
 // sort(arr.begin(), arr.end());
 // GCC compiler uses Introsort, which is a mix of quicksort and heapsort
@@ -298,7 +305,7 @@ void static_count_sort(vector<int> &arr) {
     for (int j = 0; j < counts[i]; ++j) {
       arr.push_back(i);
     }
-    // Don't forget to "clear" the "counts" array
+    // Don't forget to "clear" the "counts" array:
     counts[i] = 0;
   }
   // Big O is the same as in regular count_sort.
@@ -346,7 +353,7 @@ int main() {
   test_sort(n, tests, SEED, static_count_sort, "static count sort");
   cout << endl;
 
-  // ' <= this is a delimiter for numbers from c++14 an onwards
+  // ' <= this is a delimiter for numbers from C++14 an onwards.
   n = 10'000, tests = 100;
   cout << "n = " << n << "; tests = " << tests << endl << endl;
   test_sort(n, tests, SEED, bubble_sort, "bubble sort");

@@ -75,10 +75,12 @@ int main() {
   // There is an exception, however. Any operations with the "char" type
   // will result in "int" type.
   // Signed and unsigned types will be cast to unsigned!
+  // An operation with a fractional number and an integer number
+  // will have a fraction as the result.
 
+  int o = 15;
   // If you want to tell the compiler what type you should use, then
   // use explicit casting like this:
-  int o = 15;
   long long m = (long long)o;
   // or this:
   double k = double(o);
@@ -110,7 +112,7 @@ int main() {
   cout << endl;
 
   // Logical operations:
-  // '&&' '||' - logical И and ИЛИ
+  // '&&' '||' - logical AND and OR
   // and   or  - you can just use 'and' and 'or'
   bool student = false;
   bool smart = true;
@@ -144,13 +146,13 @@ int main() {
     a = b;
   } else if (a > b) { // If the first one failed, then check the other one
     b = a;
-  } else { // If neither succeeded this executes
-    // A block can be empty
+  } else { // If neither succeeded this executes...
+    // A block can be empty.
   }
 
   // while cycle
   a = 0, b = 123; // a and b are already declared, no need to type 'int' again
-  while (a < b) { // while this condition evaluates as true,
+  while (a < b) { // While this condition evaluates as true...
     a += 1; // increase a by 1
     // return to the beginning of the cycle, checking the condition
   }
@@ -158,22 +160,22 @@ int main() {
   // for cycle
   // for (declaration of variables inside the cycle; condition; action after cycle)
   for (int i = 0; i < 123; ++i) {
-    // Let i be an integer equal to 0
-    // While it is less than 123
-    a += a; // add 'a' to itself
-    // action after cycle (++i) - increase i by 1
+    // Let i be an integer equal to 0.
+    // While it is less than 123...
+    a += a; // add 'a' to itself.
+    // Action after cycle (++i) - increase i by 1.
   }
 
   // Increment
   a = 0;
-  // suffix increment
+  // Prefix increment:
   int c = ++a; // a = 1, c = 1
-  // prefix increment
+  // Suffix increment:
   int d = a++; // d = 1, a = 2
-  // chaining operations
+  // Chaining operations:
   int e = a += 1; // a = 3, e = 3
   c = d = e = a;
 
-  // main should return 0, if the program executed successfully
+  // main() should return 0, if the program executed successfully.
   return 0;
 }

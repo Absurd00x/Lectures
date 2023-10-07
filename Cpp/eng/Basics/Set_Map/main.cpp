@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-// You may include libraries twice. Compiler will handle this
+// You may include libraries twice. Compiler will handle this.
 #include <set>
 #include <map>
 
@@ -69,8 +69,8 @@ int main() {
   // map<key_data_type, value_data_type> map_name;
   map<int, int> counts;
   // The indices in map are called "keys".
-  // If the key you tried to get is not present, then it is created and
-  // is assigned something "empty". Like 0 for int and "" for string.
+  // If the key you put in [] is not present, then it is created and
+  // is assigned something "empty". 0 for numbers and "" for string.
   // The most frequent usage of a map is counting.
   // Unlike count sort, map does not care if the values are big or not integers.
   for (int elem : arr) {
@@ -78,6 +78,7 @@ int main() {
   }
   // Under the hood elements of a map is a pair.
   // Pair is simply two values near each other.
+  // Declared like this:
   // pair<first_data_type, second_data_type> pair_name;
   pair<char, int> example = {'a', 0};
   cout << "Pair contents:" << endl;
@@ -106,7 +107,7 @@ int main() {
     counts.erase(elem);
   }
   // .insert(), .erase(), .find(), .count() and [] have time complexity O(log(n))
-  // Behind set map and multiset there is a red-black tree:
+  // Behind set, map and multiset there is a red-black tree:
   // https://en.wikipedia.org/wiki/Red-black_tree
 
   // Multiset is a set, that can contain every element multiple times.
@@ -128,6 +129,7 @@ int main() {
   // 2. You want to remove all occurrences of an element.
   int val = *ms.begin();
   ms.erase(val);
+  // If there is no such element, nothing bad happens.
   cout << "Multiset size after smallest elements are erased = " << ms.size() << endl;
   cout << endl;
 
@@ -139,11 +141,14 @@ int main() {
   // This has time complexity of O(1).
   // But in set/map/multiset this takes O(n) iterations, because
   // we will need to traverse the red-black tree to find other elements.
+  // Incrementing will take O(log(n)) time, but adding a number
+  // will take O(dist).
 
-  // These structures have very convenient
+  // These structures have very useful methods
   // .lower_bound(num) и .upper_bound(num)
-  // The first one returns an iterator to the first element that is >= than num
-  // The second one returns an iterator to the first element that is > than num
+  // They both return an iterator to the first element that:
+  // .lower_bound(num): >= num
+  // .upper_bound(num): > num
   ms = {1, 2, 3, 3, 4, 5};
   cout << "Multiset contents are:" << endl;
   for (int num : ms) {
@@ -168,9 +173,8 @@ int main() {
   // not break, every element to the right needs to be moved one element
   // to the right to free up space.
   // arr = {2, _, 3, 1, 2, 3, 1}
-  // This leads to O(n) time complexity on .erase() method,
-  // where n is the number of elements to the right.
-  // Method .push_back() however works in O(1), because no elements are moving.
+  // This leads to O(num_of_moved) time complexity on a single call of .insert() method,
+  // Method .push_back() works in O(1), because of it.
   // It works the same way with .erase() and .pop_back() methods.
   cout << "Vector contents are:" << endl;
   for (int num : arr) {
@@ -194,7 +198,8 @@ int main() {
   }
   cout << endl << endl;
 
-  // The last trick I am going to share is how reallocating works.
+  // The last trick I am going to show is how reallocating works.
+  // Reallocation is moving from one block of memory to another.
   // When we first stated our vector to have n elements, but then
   // decided to add some more, there happens to be no space to the right!
   // What vector does is it allocates new block of memory that is twice as
@@ -238,14 +243,14 @@ int main() {
 .size()           | Number of elements present                                     | O(1)
 .empty()          | Whether if container is empty or not                           | O(1)
 .erase(elem)      | Remove all elements equal to "elem"                            | O(log(n))
-.erase(iter)      | Remove an element pointed by "iter" from structure.            |
-                  | If "iter" is equal to .end(), then undefined behavior occurres | O(log(n))
+.erase(iter)      | Remove an element pointed by "iter" from structure.            | O(log(n))
+                  | If "iter" is equal to .end(), then undefined behavior occurres |
 .clear()          | Remove all elements from the container                         | O(n)
 .lower_bound(num) | Iterator to the first element >= "num"                         | O(log(n))
 .upper_bound(num) | Iterator to the first element > "num"                          | O(log(n))
 .begin()          | Iterator to the first element of "arr"                         | O(1)
 .end()            | Iterator to the element that comes after the last one          | O(1)
-.rbegin()         | Iterator to the last element of                                | O(1)
+.rbegin()         | Iterator to the last element of structure                      | O(1)
 .rend()           | Iterator to the element that comes before the first one        | O(1)
 */
 

@@ -7,9 +7,8 @@
 using namespace std;
 
 int main() {
-  // An array is a controllable sequence of values.
-  // The elements are arranges as you like it in a sequence.
-  // Elements are indexed (same as numbered) from zero.
+  // An array is a sequence of values in a given order.
+  // Elements in an array are indexed (same as numbered) from zero.
   // For example, the first element will have an index of 0,
   // the second one will have an index of 1 and so on
   // Arrays are declared like this:
@@ -23,8 +22,8 @@ int main() {
     // This expression can be viewed as a single value
     arr[i] = 123;
   }
-  // Initial number of elements can be any non-negative number
-  // even if you don't know in when compiling.
+  // Initial number of elements can be any non-negative number.
+  // Even if you don't know in when compiling.
   // If you don't explicitly state initial value it will be set to 0
   int n;
   cin >> n;
@@ -35,11 +34,11 @@ int main() {
     // only visible in the previous 'for' cycle. It's gone afterwards.
     cin >> brr[i];
   }
-  // You can reassign vectors just like integers
+  // You can reassign vectors just like integers:
   arr = brr;
 
   // A function (in programming) is a callable code block.
-  // Vector has functions to work with it.
+  // A vector has functions to work with it.
   // Functions that work with specific object are called methods.
   // In our case, this is a vector object.
   // Method .size(), for instance, tells the current array size:
@@ -78,9 +77,9 @@ int main() {
   // That means, that if you have a house with an address of "x",
   // then you can easily understand, that after "y" houses, there
   // is a house with address "x + y".
-  // So, we get an address of the beginning of the "arr" array,
+  // We get an address of the beginning of the "arr" array,
   // increase it by 3 and then dereference it.
-  // This is equivalent to arr[3]
+  // This is equivalent to arr[3].
   cout << *(arr.begin() + 3) << endl;
 
   // Iterators are needed mostly becase the standard library uses them
@@ -101,7 +100,7 @@ int main() {
 
   // There also are reversed iterators. They are the same as the regular ones,
   // except that increasing them, will decrese the address number.
-  // They go backwards in other words
+  // They go backwards in other words.
 
   //        .begin()             .end()
   //          |                   |
@@ -112,13 +111,13 @@ int main() {
   //      |                   |
   //    .rend()            .rbegin()
 
-  // string is the same as vector<char>
+  // string is the same as vector<char>.
   // It has all methods that vector does, but it's more convenient.
-  // You can directly use it with 'cout'
-  // Both vectors ands strings can be compared with themselves using
-  // lexicographic order or dictionary order. E.g.
+  // You can directly use it with 'cout'.
+  // Vectors can be compared with other vectors and strings can be
+  // compared with other strings using lexicographic order or dictionary order. E.g.
   // "father" goes before "fruit"
-  // and "123" goes before "5"
+  // and "123" goes before "5",
   // but if we compare them as numbers, the result will be different
   string s = "123";
   string t = "5";
@@ -128,11 +127,10 @@ int main() {
     cout << s << " >= " << t << endl;
   }
 
-  // You must state string's initial value
+  // You must state string's initial value:
   string str(12, '0');
-  // or do not state anything at all
+  // Or do not state anything at all:
   string example;
-  // This is really convenient
   cin >> str;
   cout << str << endl;
 
@@ -164,8 +162,8 @@ arr.back()             | Access the element at the beginning of "arr"           
 arr.front()            | Access the element at the end of "arr"                      | O(1)
 arr.size()             | Number of elements present in "arr"                         | O(1)
 arr.empty()            | Whether if "arr" is empty or not                            | O(1)
-arr.erase(iter)        | Remove an element from "arr", which is pointed by "iter"    | O(n) if deleted from the beginning
-arr.insert(iter, elem) | Add an alement to "arr" to the position specified by "iter" | O(n) if added to the beginning
+arr.erase(iter)        | Remove an element from "arr", which is pointed by "iter"    | O(num_of_moved)
+arr.insert(iter, elem) | Add an alement to "arr" to the position specified by "iter" | O(num_of_moved)
 arr[i]                 | Access the element with index i                             | O(1)
 arr.clear()            | Remove all elements from "arr"                              | O(n)
 arr.assign(cnt, elem)  | Replace "arr" with "cnt" elements equal to "elem"           | O(n)
