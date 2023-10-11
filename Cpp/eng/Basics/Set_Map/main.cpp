@@ -116,8 +116,8 @@ int main() {
     ms.insert(0);
   }
   cout << "Initial multiset size = " << ms.size() << endl;
-  // .count() method will traverse the entire tree in the worst case when
-  // all elements are equal resulting in O(n) time complexity per call.
+  // .count() method will traverse entire tree
+  // resulting in O(result) time complexity per call.
 
   // When removing elements from multiset there are two possible situations.
   // 1. You want to remove a single instance of an element.
@@ -139,10 +139,10 @@ int main() {
   cout << "Element at index 3 equals to ";
   cout << *(arr.begin() + 3) << endl;
   // This has time complexity of O(1).
-  // But in set/map/multiset this takes O(n) iterations, because
+  // But in set/map/multiset this takes O(distance) iterations, because
   // we will need to traverse the red-black tree to find other elements.
   // Incrementing will take O(log(n)) time, but adding a number
-  // will take O(dist).
+  // will take O(distance).
 
   // These structures have very useful methods
   // .lower_bound(num) и .upper_bound(num)
