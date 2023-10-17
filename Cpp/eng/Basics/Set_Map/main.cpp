@@ -197,44 +197,6 @@ int main() {
     cout << num << ' ';
   }
   cout << endl << endl;
-
-  // The last trick I am going to show is how reallocating works.
-  // Reallocation is moving from one block of memory to another.
-  // When we first stated our vector to have n elements, but then
-  // decided to add some more, there happens to be no space to the right!
-  // What vector does is it allocates new block of memory that is twice as
-  // big as the previous one and copies values from the old place to the new one.
-  // Surprisingly, this results in O(n) time and space complexity.
-  // Let's proof this.
-  // Let the initial size of the array be 1.
-  // We will add elements until there are 'n' of them.
-  // The first time vector will reallocate 1 element, then 2, then 4 and so on.
-  // This equals to the following sum:
-  // 1 + 2 + 4 + ... + 2^(floor(log(n)))
-  // floor(x) is rounding down.
-  // Let floor(log(n)) = k.
-  // In other words, k is the maximum power of two where reallocation will happen.
-  // 1 + 2 + 4 + ... + 2^k
-  // Let's interpret these numbers in binary:
-  // 1 + 10 + 100 + ... + 100..00
-  // 00001
-  // 00010
-  // 00100
-  // 01000
-  // -k---
-  // 01111
-  // We can clearly see, that 2^(k + 1) is greater than our sum.
-  // On the other hand, 2^(k + 1) is at most twice as big as 'n'.
-  // Therefore, we get O(2*n) = O(n) time and space complexity.
-  // This is already implemented in vector. No need to worry.
-  // .capacity() method tells us how many elements are currently allocated
-  // for this vector.
-  cout << "Vector size is " << arr.size() << endl;
-  cout << "Vector capacity is " << arr.capacity() << endl;
-  cout << "Adding 123 at the end of array" << endl << endl;
-  arr.push_back(123);
-  cout << "Now vector size is " << arr.size() << endl;
-  cout << "Now vector capacity is " << arr.capacity() << endl;
   return 0;
 }
 
