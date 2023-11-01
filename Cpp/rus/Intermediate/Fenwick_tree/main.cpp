@@ -9,29 +9,29 @@ typedef long long ll;
 class FTAddSingleSumOnSegment {
 private:
   int n;
-  vector<int> guts;
+  vector<int> fen;
 public:
   void build(vector<int> &arr) {
-    n = (int)arr.size() + 1;
-    guts.assign(n, 0);
+    n = (int)arr.size();
+    fen.assign(n + 1, 0);
     for (int i = 0; i < n; ++i) {
-      guts[i + 1] = guts[i] + arr[i];
+      fen[i + 1] = fen[i] + arr[i];
     }
     for (int i = n; i > 0; --i) {
-      guts[i] -= guts[i - i&-i];
+      fen[i] -= fen[i - i&-i];
     }
   }
 
   void add(int val, int i) {
     for (; i <= n; i += i & (-i)) {
-      guts[i] += val;
+      fen[i] += val;
     }
   }
 
   int get(int r) {
     int res = 0;
     for (; r > 0; r -= r & (-r)) {
-      res += guts[r];
+      res += fen[r];
     }
     return res;
   }
@@ -45,15 +45,15 @@ public:
 class FTAddToSegmentGetSingle {
 private:
   int n;
-  vector<int> guts;
+  vector<int> fen;
 public:
   void build(int n_) {
     n = n_;
-    guts.assign(n + 1, 0);
+    fen.assign(n + 1, 0);
   }
   void add(int v, int r) {
     for (; r > 0; r -= r&-r) {
-      guts[r] += v;
+      fen[r] += v;
     }
   }
   void add(int v, int l, int r) {
@@ -63,7 +63,7 @@ public:
   int get(int i) {
     int res = 0;
     for (; i <= n; i += i&-i) {
-      res += guts[i];
+      res += fen[i];
     }
     return res;
   }
@@ -73,16 +73,16 @@ public:
 class FT2D {
 private:
   int n, m;
-  vector<vector<int>> guts;
+  vector<vector<int>> fen;
 public:
   void build(int n_, int m_) {
     n = n_, m = m_;
-    guts.assign(n + 1, vector<int>(m + 1, 0));
+    fen.assign(n + 1, vector<int>(m + 1, 0));
   }
   void add(int v, int i, int j) {
     for (int i1 = i; i1 <= n; i1 += i1&-i1) {
       for (int j1 = j; j1 <= m; j1 += j1&-j1) {
-        guts[i1][j1] += v;
+        fen[i1][j1] += v;
       }
     }
   }
@@ -90,7 +90,7 @@ public:
     int res = 0;
     for (int i1 = i; i1 > 0; i1 -= i1&-i1) {
       for (int j1 = j; j1 > 0; j1 -= j1&-j1) {
-        res += guts[i1][j1];
+        res += fen[i1][j1];
       }
     }
     return res;
@@ -101,29 +101,29 @@ public:
 class FTree {
 private:
   int n, l;
-  vector<int> guts;
+  vector<int> fen;
 public:
   void build(int n_) {
     n = n_;
-    guts.resize(n + 1);
+    fen.resize(n + 1);
     for (int i = 1; i <= n; ++i) {
-      guts[i] = (i & -i);
+      fen[i] = (i & -i);
     }
     l = __lg(n);
   }
   void add(int v, int ind) {
     for (int i = ind + 1; i <= n; i += i&-i) {
-      guts[i] += v;
+      fen[i] += v;
     }
   }
-  int lower_bound(int x) {
+  int descend(int x) {
     int offset = 0;
     for (int p = l; p >= 0; --p) {
-      // Не забывай выход за границы. А то спустишься в право,
+      // Не забывай выход за границы. А то спустишься вправо,
       // а там части дерева просто нет.
-      if (offset + (1 << p) <= n && guts[offset + (1 << p)] <= x) {
+      if (offset + (1 << p) <= n && fen[offset + (1 << p)] <= x) {
         offset += (1 << p);
-        x -= guts[offset];
+        x -= fen[offset];
       }
     }
     return offset;
