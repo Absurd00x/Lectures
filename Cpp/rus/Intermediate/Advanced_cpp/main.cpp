@@ -18,7 +18,7 @@ typedef long double ld;
 #define rall(x) std::rbegin(x),std::rend(x)
 
 namespace nums {
-  const double PI = acos(-1.0L);
+  const double PI = acosl(-1.0L);
 }
 
 // Нужно позже для разделителей:
@@ -99,7 +99,6 @@ signed main() {
     int last = get<4>(quint);
     // Это менее удобно, но так можно делать.
     // ВНИМАНИЕ! Число в треугольных скобочках должно быть константным.
-    // Либо число, либо константная переменная.
   }
   { // Ещё структурные привязки можно использовать в попсовых фориках так:
     vector<int> arr;
