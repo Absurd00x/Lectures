@@ -16,12 +16,15 @@ int main() {
   // Есть следующие типы данных:
   // Целые числа
   // [-2^15; 2^15)
+  // 2 байта
   short short_integer = 0;
   // [-2^31; 2^31)
   // 2 * 10 ^ 9 помещается
+  // 4 байта
   int integer = 0;
   // [-2^63; 2^63)
   // 9 * 10 ^ 18
+  // 8 байт
   long long long_integer = 0;
   // Чаще всего следует использовать long long
 
@@ -34,21 +37,25 @@ int main() {
   // lowest => -3.40282e+38
   // min    => 1.17549e-38
   // max    => 3.40282e+38
+  // 2 байта
   float floating_point_number = 3.14;
 
   // lowest => -1.79769e+308
   // min    => 2.22507e-308
   // max    => 1.79769e+308
+  // 4 байта
   double double_precision = 3.1415;
   // Используй этот
 
   // lowest => -1.18973e+4932
   // min    => 3.3621e-4932
   // max    => 1.18973e+4932
+  // 8 байт
   long double long_double_precision = 3.1415926535;
   // или этот, но в Visual Studio long double это double на самом деле
 
   // [-2^7; 2^7)
+  // 1 байт
   char character = 'a';
 
   // Все типы выше могут иметь префикс signed или unsigned,
@@ -74,6 +81,12 @@ int main() {
   // Любые операции с char в результате дадут int.
   // Если есть signed и unsigned, то приведётся к unsigned типу.
   // У операции с дробным и целым типом будет дробный результат.
+
+  // int + long long = long long
+  // int + float = float
+  // double + float = double
+  // signed int + unsigned int = unsigned int
+  // char + char = int
 
   int o = 15;
   // Если хочешь явно сказать компилятору какой тип использовать, то
