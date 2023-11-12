@@ -6,7 +6,7 @@
 // Чтобы использовать это в Visual studio, иди в
 // visual studio -> версия -> VC -> tools -> MSVC -> ver -> include
 // Создай папку с именем "bits" и помести туда stdc++.h файл.
-// Возможно, придётся написать #include "bits/stdtc++.h"
+// Возможно, придётся написать #include "bits/stdc++.h"
 
 using namespace std;
 
