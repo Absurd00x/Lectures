@@ -108,6 +108,26 @@ int main() {
   // читается "си ин"
   cin >> integer; // console input
 
+  // У каждого символа есть код. Вот таблица символов и их кодов:
+  for (int i = 0; i < 256; ++i) {
+    cout << i << ": " << char(i) << endl;
+  }
+  cout << endl;
+  // То есть чтобы получить из СИМВОЛА цифры число, нужно написать:
+  char symbol = '5';
+  cout << "5 as a symbol: " << symbol << endl;
+  int num = symbol - '0';
+  cout << "5 as a number: " << num << endl;
+  // Аналогично для букв можно получить их номер (начиная с нуля) в алфавите:
+  symbol = 'p';
+  num = symbol - 'a';
+  cout << "Letter 'p' has index " << num << " in the alphabet" << endl;
+  // Для заглавных тоже самое:
+  symbol = 'K';
+  num = symbol - 'A';
+  cout << "Letter 'K' has index " << num << " in the alphabet" << endl;
+  cout << endl;
+
   // Арифметические операторы:
   // Бинарные:
   // '+' '-' '*' '/' '%' - сложение, вычитание, умножение, деление, остаток от деления
