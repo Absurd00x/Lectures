@@ -101,53 +101,12 @@ int main() {
 
   // ввод/вывод
   // "cout << что-то;" - выводит что-то в консоль
-  // endl выводит символ конца строки
+  // endl переносит строку
   // читается "си аут"
   cout << "Hello, World!" << endl; // console output
   // "cin >> куда-то;" - считывает из консоли значение куда-то
   // читается "си ин"
   cin >> integer; // console input
-
-  // У каждого символа есть код. Вот таблица символов и их кодов:
-  for (int i = 0; i < 256; ++i) {
-    cout << i << ": " << char(i) << endl;
-  }
-  cout << endl;
-  // Все буквы и цифры в таблице идут по порядку
-  cout << "All digits:" << endl;
-  for (char c = '0'; c <= '9'; ++c) {
-    cout << c;
-  }
-  cout << endl << endl;
-  cout << "All capital letters:" << endl;
-  for (char c = 'A'; c <= 'Z'; ++c) {
-    cout << c;
-  }
-  cout << endl << endl;
-  cout << "All lowercase letters:" << endl;
-  for (char c = 'a'; c <= 'z'; ++c) {
-    cout << c;
-  }
-  cout << endl << endl;
-  // То есть чтобы получить из СИМВОЛА цифры число, нужно написать:
-  char symbol = '5';
-  cout << "5 as a symbol: " << symbol << endl;
-  int num = symbol - '0';
-  cout << "5 as a number: " << num << endl;
-  // Аналогично для букв можно получить их номер (начиная с нуля) в алфавите:
-  symbol = 'p';
-  num = symbol - 'a';
-  cout << "Letter 'p' has index " << num << " in the alphabet" << endl;
-  // Для заглавных тоже самое:
-  symbol = 'K';
-  num = symbol - 'A';
-  cout << "Letter 'K' has index " << num << " in the alphabet" << endl;
-  // Аналогично можно получить букву по её индексу (номеру с нуля)
-  // Только нужно явно преобразовать к чару, чтобы компилятор не ругался:
-  num = 13;
-  symbol = char('a' + 13);
-  cout << symbol << " has index " << num << " in the alphabet" << endl;
-  cout << endl;
 
   // Арифметические операторы:
   // Бинарные:
@@ -247,6 +206,47 @@ int main() {
   // Цепочка операций выполняется справа-налево:
   int e = a += 1; // a = 3, e = 3
   c = d = e = a;
+
+  // У каждого символа есть код. Вот таблица символов и их кодов:
+  for (int i = 0; i < 128; ++i) {
+    cout << i << ": " << char(i) << endl;
+  }
+  cout << endl;
+  // Все буквы и цифры в таблице идут по порядку
+  cout << "All digits:" << endl;
+  for (char c = '0'; c <= '9'; ++c) {
+    cout << c;
+  }
+  cout << endl << endl;
+  cout << "All capital letters:" << endl;
+  for (char c = 'A'; c <= 'Z'; ++c) {
+    cout << c;
+  }
+  cout << endl << endl;
+  cout << "All lowercase letters:" << endl;
+  for (char c = 'a'; c <= 'z'; ++c) {
+    cout << c;
+  }
+  cout << endl << endl;
+  // То есть чтобы получить из СИМВОЛА цифры число, нужно написать:
+  char symbol = '5';
+  cout << "5 as a symbol: " << symbol << endl;
+  int num = symbol - '0';
+  cout << "5 as a number: " << num << endl;
+  // Аналогично для букв можно получить их номер (начиная с нуля) в алфавите:
+  symbol = 'p';
+  num = symbol - 'a';
+  cout << "Letter 'p' has index " << num << " in the alphabet" << endl;
+  // Для заглавных тоже самое:
+  symbol = 'K';
+  num = symbol - 'A';
+  cout << "Letter 'K' has index " << num << " in the alphabet" << endl;
+  // Аналогично можно получить букву по её индексу (номеру с нуля)
+  // Только нужно явно преобразовать к чару, чтобы компилятор не ругался:
+  num = 13;
+  symbol = char('a' + 13);
+  cout << symbol << " has index " << num << " in the alphabet" << endl;
+  cout << endl;
 
   // main() должен вернуть 0, если программа успешно завершилась.
   return 0;
