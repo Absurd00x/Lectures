@@ -14,11 +14,12 @@ public:
   void build(vector<int> &arr) {
     n = (int)arr.size();
     fen.assign(n + 1, 0);
-    for (int i = 0; i < n; ++i) {
-      fen[i + 1] = fen[i] + arr[i];
-    }
-    for (int i = n; i > 0; --i) {
-      fen[i] -= fen[i - i&-i];
+    for (int i = 1; i <= n; ++i) {
+      fen[i] += arr[i - 1];
+      int next = i + (i&-i);
+      if (next <= n) {
+        fen[next] += fen[i];
+      }
     }
   }
 

@@ -99,6 +99,7 @@ void solve() {
       for (int i = 0; i < cost_left; ++i) {
         cur.pop_front();
       }
+      p2 -= p1 + 1;
       p1 = -1;
     } else {
       ans += cost_right;
