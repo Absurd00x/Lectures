@@ -41,7 +41,7 @@ const auto boostIO = []() {
 // Константы для брута
 // Можно только праые границы использовать (максимумы),
 // но в ограничения в этот момент посмотреть обязательно
-const int MIN_N = 1, MAX_N = 5;
+const int MIN_N = 1, MAX_N = 10;
 const int MIN_S = 1, MAX_S = 7;
 // Проверяем ли мы брутом "правильное" решение
 const bool BCHECK = true;
@@ -187,6 +187,11 @@ signed main() {
     int tests = 1;
     while (tests --> 0) {
       read();
+//      if (BSOLVE) {
+//        brute();
+//      } else {
+//        solve();
+//      }
       (BSOLVE ? brute() : solve());
       write();
     }
