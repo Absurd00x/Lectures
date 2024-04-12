@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// O(2^n*n)
 void solve() {
   int n;
   long long x;
@@ -152,6 +153,19 @@ int main() {
    * bit = (cur >> k) & 1
    * bit может быть равен 0 или 1 в этом случае. Как и должно быть.
    */
+   for (int i = 7; i >= 0; --i) {
+     cout << i;
+   }
+   cout << endl;
+   for (int i = 7; i >= 0; --i) {
+    cout << ((cur >> i) & 1);
+   }
+   cout << endl << endl;
+   cout << "Third bit:" << endl;
+   cout << ((cur >> 3) & 1) << endl;
+   cout << "Fourth bit:" << endl;
+   cout << ((cur >> 4) & 1) << endl;
+   cout << endl;
 
   /* Число, двоичное представление которого необходимо для выбора определённых
    * битов называется маской. Иными словами, маска - число, фильтр для битов.
@@ -199,14 +213,15 @@ int main() {
    * чисел. Код сверху.
    */
 
-  /* Ещё одна популярная операция с битами - убрать из числа все биты,
+  /* Последняя популярная операция с битами - убрать из числа все биты,
    * кроме наименьшего. Иначе говоря, получить 2^(наименьший единичный бит).
    * Она делается так:
    * num&-num
    */
   cout << bitset<I>(num) << " = num" << endl;
+  cout << bitset<I>(~num) << " = ~num" << endl;
+  cout << bitset<I>(~num + 1) << " = ~num + 1" << endl;
   cout << bitset<I>(-num) << " = -num" << endl;
-  cout << bitset<I>(num&-num) << " = num&-num" << endl;
   cout << endl;
   for (int i = 0; i < 16; ++i) {
     cout << bitset<N / 2>(i) << ' ' << bitset<N / 2>(i&-i) << endl;

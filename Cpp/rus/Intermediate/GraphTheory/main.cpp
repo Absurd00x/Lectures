@@ -180,12 +180,14 @@ vector<int> _bfs(vector<vector<int>> &g, int start) {
   queue<int> q;
   q.push(start);
   dists[start] = 0;
+  vector<int> prevs(n, -1);
   while (!q.empty()) {
     int cur = q.front();
     q.pop();
     for (int next : g[cur]) {
       if (dists[next] == -1) {
         dists[next] = dists[cur] + 1;
+        prevs[next] = cur;
         q.push(next);
       }
     }
