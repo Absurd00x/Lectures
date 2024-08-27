@@ -239,7 +239,7 @@ signed main() {
   //  3   xxxxxxxxxxxxxxxxxxxxxx2                       |
   //  2   xxxxxxxxxxx           | xxxxxxxxxx3           |
   //  1   xxxxx     | xxxxx     | xxxx4     | xxxxx     |
-  //  0   xx  v xx  v xx  v xx  v xx  v  5  v xx  v xx  v
+  //  0   xx  | xx  | xx  | xx  | xx  |  5  | xx  | xx  |
   //    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
   // Обойдём вершины в порядке как на рисунке.
   // Будем хранить:
