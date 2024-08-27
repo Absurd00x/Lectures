@@ -153,7 +153,7 @@ signed main() {
   //  3   xxxxxxxxxxxxxxxxxxxxxxx                       |     индексы, покрытые
   //  2   xxxxxxxxxxx           | xxxxxxxxxxx           |  <= иксами входят в
   //  1   xxxxx     | xxxxx     | xxxxx     | xxxxx     |     сумму для значения
-  //  0   xx  v xx  v xx  v xx  v xx  v xx  v xx  v xx  v
+  //  0   xx  | xx  | xx  | xx  | xx  | xx  | xx  | xx  |
   //    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 <= сам индекс
   // from  0  0  2  0  4  4  6  0  8  8 10  8 12 12 14  0 <= от какого индекса
   //   to  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 <= до какого индекса
