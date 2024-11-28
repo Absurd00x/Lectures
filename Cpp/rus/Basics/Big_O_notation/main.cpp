@@ -334,30 +334,6 @@ void count_sort(vector<int> &arr) {
 
 // Отношения O, чтобы понять какое слагаемое больше:
 // 1 < log < log^2 < sqrt < n < n*log < n*log^2 < n*sqrt(n) < n^2 < 2^n < n! < n^n
-
-void static_count_sort(vector<int> &arr) {
-  // Статические переменные остаются после завершения функции.
-  // Так что при следующем вызове этот массив останется таким же, каким
-  // был на момент завершения предыдущего вызова:
-  static vector<int> counts;
-  int max = *max_element(arr.begin(), arr.end());
-  counts.resize(max + 1);
-  for (int i = 0; i < (int)arr.size(); ++i) {
-    ++counts[arr[i]];
-  }
-  arr.clear();
-  for (int i = 0; i <= max; ++i) {
-    for (int j = 0; j < counts[i]; ++j) {
-      arr.push_back(i);
-    }
-    // Не забудем "очистить" массив "counts":
-    counts[i] = 0;
-  }
-  // Асимптотика не отличается от обычной сортировки подсчётом при одном вызове.
-  // Для нескольких вызовов асимптотика по памяти будет O(max_element), а у
-  // обычной сортировки подсчётом будет O(t * max_element), если вызывали t раз.
-}
-
 // Не обращай особого внимания, просто получаю случайную перестановку.
 vector<int> get_random_array(int size, mt19937 rngesus) {
   vector<int> res(size);
@@ -397,7 +373,6 @@ int main() {
   test_sort(n, tests, SEED, fast_bubble_sort, "fast bubble sort");
   test_sort(n, tests, SEED, merge_sort, "merge sort");
   test_sort(n, tests, SEED, count_sort, "count sort");
-  test_sort(n, tests, SEED, static_count_sort, "static count sort");
   cout << endl;
 
   // ' <= это разделитель чисел начиная с C++14 и далее.
@@ -407,7 +382,6 @@ int main() {
   test_sort(n, tests, SEED, fast_bubble_sort, "fast bubble sort");
   test_sort(n, tests, SEED, merge_sort, "merge sort");
   test_sort(n, tests, SEED, count_sort, "count sort");
-  test_sort(n, tests, SEED, static_count_sort, "static count sort");
   cout << endl;
   return 0;
 }
@@ -448,10 +422,6 @@ Testing count sort
 0.00011819s за один тест
 0.01181900s всего
 ===========================================================
-Testing static count sort
-0.00011803s за один тест
-0.01180300s всего
-===========================================================
 
 n = 10000; tests = 100
 
@@ -470,9 +440,5 @@ Testing merge sort
 Testing count sort
 0.00121320s за один тест
 0.12132000s всего
-===========================================================
-Testing static count sort
-0.00120476s за один тест
-0.12047600s всего
 ===========================================================
 */
